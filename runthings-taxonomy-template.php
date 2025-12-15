@@ -48,7 +48,7 @@ class Plugin {
 			register_activation_hook( RUNTHINGS_TAXONOMY_TEMPLATE_FILE, array( $this, 'activate' ) );
 
 			add_filter( 'taxonomy_template', array( $this, 'filter_taxonomy_template' ) );
-			add_filter( 'category_template', array( $this, 'filter_category_template' ) );
+			add_filter( 'category_template', array( $this, 'filter_taxonomy_template' ) );
 
 			// Enable for all public taxonomies.
 			add_action( 'init', array( $this, 'register_taxonomy_hooks' ), 99 );
@@ -205,24 +205,6 @@ class Plugin {
 		}
 
 		/**
-		 * Filter category template
-		 *
-		 * @param string $category_template Current template path.
-		 * @return string
-		 */
-		public function filter_category_template( $category_template ) {
-			$term_id           = absint( get_query_var( 'cat' ) );
-			$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
-			if ( isset( $template_mappings[ $term_id ] ) && $template_mappings[ $term_id ] != 'default' ) {
-				$located_template = locate_template( $template_mappings[ $term_id ] );
-				if ( ! empty( $located_template ) ) {
-					return apply_filters( 'runthings_taxonomy_template_found', $located_template );
-				}
-			}
-			return $category_template;
-		}
-
-		/**
 		 * Filter taxonomy template
 		 *
 		 * @param string $taxonomy_template Current template path.
@@ -233,7 +215,7 @@ class Plugin {
 			if ( ! $queried_term || ! isset( $queried_term->term_id ) ) {
 				return $taxonomy_template;
 			}
-			$term_id           = $queried_term->term_id;
+			$term_id = $queried_term->term_id;
 			$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
 			if ( isset( $template_mappings[ $term_id ] ) && $template_mappings[ $term_id ] != 'default' ) {
 				$located_template = locate_template( $template_mappings[ $term_id ] );
