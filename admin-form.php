@@ -71,6 +71,10 @@ class Admin_Form {
 	 * @return string Message HTML
 	 */
 	private static function process_form_submission() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return '';
+		}
+
 		$runthings_nonce = isset( $_POST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) : '';
 
 		if ( isset( $_POST['template_settings'] ) && is_string( $_POST['template_settings'] ) ) {
