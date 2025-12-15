@@ -1,12 +1,13 @@
 === Taxonomy Template ===
-Contributors: runthings.dev
+Contributors: runthingsdev
 Tags: category, template, taxonomy, custom template, archive
-Requires at least: 5.0
-Tested up to: 6.7
+Requires at least: 6.4
+Requires PHP: 7.4
+Tested up to: 6.9
 Stable tag: 1.0.0
 License: GPLv2 or later
 
-Assign custom templates to categories and taxonomies, just like page templates.
+Assign templates to categories and other taxonomies, just like page templates.
 
 == Description ==
 

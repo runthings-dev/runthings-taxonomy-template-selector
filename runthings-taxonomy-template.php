@@ -1,10 +1,12 @@
 <?php
 /**
  * Plugin Name: Taxonomy Template
- * Description: Add custom template selection to category and other taxonomies
- * Author: Matthew Harris, runthings.dev
+ * Description: Add template selection to categories and other taxonomies
+ * Author: runthingsdev
  * Author URI: https://runthings.dev/
  * Version: 1.0.0
+ * Requires at least: 6.4
+ * Requires PHP: 7.4
  * License: GPLv2 or later
  * Text Domain: runthings-taxonomy-template
  *
