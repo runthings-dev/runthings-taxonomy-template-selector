@@ -102,9 +102,9 @@ class Admin {
 		?>
 		<?php wp_nonce_field( 'runthings_taxonomy_template_nonce_action', 'runthings_taxonomy_template_nonce_field' ); ?>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="taxonomy_template"><?php esc_html_e( 'Taxonomy Template', 'runthings-taxonomy-template' ); ?></label></th>
+			<th scope="row" valign="top"><label for="runthings_taxonomy_template"><?php esc_html_e( 'Taxonomy Template', 'runthings-taxonomy-template' ); ?></label></th>
 			<td>
-				<select name="taxonomy_template" id="taxonomy_template">
+				<select name="runthings_taxonomy_template" id="runthings_taxonomy_template">
 					<option value='default'><?php esc_html_e( 'Default Template', 'runthings-taxonomy-template' ); ?></option>
 					<?php $this->render_template_dropdown( $selected_template ); ?>
 				</select>
@@ -148,12 +148,12 @@ class Admin {
 			return;
 		}
 
-		if ( isset( $_POST['taxonomy_template'] ) ) {
+		if ( isset( $_POST['runthings_taxonomy_template'] ) ) {
 			$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
 			if ( ! is_array( $template_mappings ) ) {
 				$template_mappings = array();
 			}
-			$template_mappings[ $term_id ] = sanitize_text_field( wp_unslash( $_POST['taxonomy_template'] ) );
+			$template_mappings[ $term_id ] = sanitize_text_field( wp_unslash( $_POST['runthings_taxonomy_template'] ) );
 			update_option( 'runthings_taxonomy_template_mappings', $template_mappings );
 		}
 	}
