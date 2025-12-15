@@ -51,6 +51,15 @@ Yes. Add this to your wp-config.php before uninstalling:
 
 Make sure your theme has at least one PHP file with either a `Taxonomy Template:` or `Category Template:` header comment. The dropdown only appears if templates are available to select.
 
+= Can I add custom directories for template scanning? =
+
+Yes. Use the `runthings_taxonomy_template_dirs` filter to add additional directories. Note that subdirectories are not scanned automatically - you must add each folder path explicitly.
+
+`add_filter( 'runthings_taxonomy_template_dirs', function( $dirs ) {
+    $dirs[] = get_stylesheet_directory() . '/taxonomy-templates';
+    return $dirs;
+} );`
+
 = Upgrading from Advanced Category Template =
 
 This plugin is a fork of the original "Advanced Category Template" plugin by Praveen Goswami. 
