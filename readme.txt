@@ -69,6 +69,20 @@ Yes. Use the `runthings_taxonomy_template_dirs` filter to add additional directo
     return $dirs;
 } );`
 
+= Can I add or remove templates without modifying theme files? =
+
+Yes. Use the `runthings_taxonomy_template_list` filter to modify the available templates. The filename is a path relative to your theme root - if using a child theme, it checks the child theme first, then falls back to the parent theme.
+
+`add_filter( 'runthings_taxonomy_template_list', function( $templates ) {
+    // Add a template from theme root
+    $templates['My Custom Archive'] = 'custom-archive.php';
+    // Add a template from a subdirectory
+    $templates['Product Archive'] = 'template-parts/archive-product.php';
+    // Remove one you don't want
+    unset( $templates['Unwanted Template'] );
+    return $templates;
+} );`
+
 = How do I upgrade from Advanced Category Template? =
 
 This plugin is a fork of the original "Advanced Category Template" plugin by Praveen Goswami. It was adopted because the original plugin was removed from the WordPress.org plugin directory due to security issues.
