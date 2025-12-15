@@ -168,25 +168,32 @@ class Admin_Form {
 	private static function render_html( $msg, $taxonomies ) {
 		$runthings_plugin_status = get_option( 'runthings_taxonomy_template_disabled' );
 		?>
-		<!-- Setting area -->
-		<div class="templateFormType" style="width:70%; float:left;">
+		<div class="wrap">
 			<?php echo wp_kses_post( $msg ); ?>
-			<fieldset class="temp-setting-fieldset">
-				<legend class="temp-setting-legend"><strong><?php esc_html_e( 'Settings', 'runthings-taxonomy-template' ); ?></strong></legend>
-				<form action="" method="post" enctype="multipart/form-data">
+
+			<div class="card">
+				<h2><?php esc_html_e( 'Plugin Status', 'runthings-taxonomy-template' ); ?></h2>
+				<form action="" method="post">
 					<?php wp_nonce_field( 'template_settings_action_disable' ); ?>
-					<input type="checkbox" name="disable" id="disable" value="1" <?php checked( $runthings_plugin_status, '1' ); ?>> <label for="disable"><?php esc_html_e( 'Disable Plugin', 'runthings-taxonomy-template' ); ?></label>
-					<input type="submit" name="Submit" value="<?php esc_attr_e( 'Disable', 'runthings-taxonomy-template' ); ?>" class="tmp-btn" />
-					<input type="hidden" name="plugin_disable" value="disable" style="display:none;" />
+					<p>
+						<label>
+							<input type="checkbox" name="disable" id="disable" value="1" <?php checked( $runthings_plugin_status, '1' ); ?>>
+							<?php esc_html_e( 'Disable Plugin', 'runthings-taxonomy-template' ); ?>
+						</label>
+					</p>
+					<p class="description"><?php esc_html_e( 'Check this box to disable the plugin functionality.', 'runthings-taxonomy-template' ); ?></p>
+					<p>
+						<input type="hidden" name="plugin_disable" value="disable" />
+						<?php submit_button( __( 'Update Status', 'runthings-taxonomy-template' ), 'primary', 'Submit', false ); ?>
+					</p>
 				</form>
-				<p class="temp-summery"><?php esc_html_e( 'Note: If you wish to disable plugin then checked above checkbox.', 'runthings-taxonomy-template' ); ?></p>
-			</fieldset>
-			<!-- Advanced setting area -->
-			<fieldset class="temp-setting-fieldset">
-				<legend class="temp-setting-legend"><strong><?php esc_html_e( 'General Settings', 'runthings-taxonomy-template' ); ?></strong></legend>
-				<form action="" method="post" enctype="multipart/form-data">
+			</div>
+
+			<div class="card">
+				<h2><?php esc_html_e( 'Enabled Taxonomies', 'runthings-taxonomy-template' ); ?></h2>
+				<form action="" method="post">
 					<?php wp_nonce_field( 'template_settings_action_save' ); ?>
-					<div class="type_chkbox_main">
+					<fieldset>
 						<?php
 						foreach ( $taxonomies as $runthings_taxonomy ) {
 							$runthings_is_checked     = false;
@@ -196,34 +203,34 @@ class Admin_Form {
 								$runthings_is_checked    = in_array( $runthings_taxonomy->name, $runthings_taxonomy_list, true );
 							}
 							?>
-							<div class="temp-cat-chkbox">
-								<input type="checkbox" name="post_category_name[]" value="<?php echo esc_attr( $runthings_taxonomy->name ); ?>" id="<?php echo esc_attr( $runthings_taxonomy->name ); ?>" <?php checked( $runthings_is_checked ); ?> class="chkBox" />
-								<label for="<?php echo esc_attr( $runthings_taxonomy->name ); ?>">
-									<?php echo esc_html( ucfirst( $runthings_taxonomy->object_type[0] ) . '_' . $runthings_taxonomy->label ); ?>
+							<p>
+								<label>
+									<input type="checkbox" name="post_category_name[]" value="<?php echo esc_attr( $runthings_taxonomy->name ); ?>" id="<?php echo esc_attr( $runthings_taxonomy->name ); ?>" <?php checked( $runthings_is_checked ); ?> />
+									<?php echo esc_html( ucfirst( $runthings_taxonomy->object_type[0] ) . ' — ' . $runthings_taxonomy->label ); ?>
 								</label>
-							</div>
+							</p>
 							<?php
 						}
 						?>
-					</div>
-					<div class="tmpType_submit">
-						<input type="submit" name="submit" value="<?php esc_attr_e( 'Save', 'runthings-taxonomy-template' ); ?>" class="tmp-btn" />
-						<input type="hidden" name="template_settings" value="save" style="display:none;" />
-					</div>
+					</fieldset>
+					<p class="description"><?php esc_html_e( 'Select which taxonomies should have template selection enabled.', 'runthings-taxonomy-template' ); ?></p>
+					<p>
+						<input type="hidden" name="template_settings" value="save" />
+						<?php submit_button( __( 'Save Settings', 'runthings-taxonomy-template' ), 'primary', 'submit', false ); ?>
+					</p>
 				</form>
-				<p class="temp-summery"><?php esc_html_e( 'Note: Select one or more taxonomies where you need to enable template selection.', 'runthings-taxonomy-template' ); ?></p>
-			</fieldset>
-			<!-- Default setting area -->
-			<div class="defaultFormType" style="width:70%; float:left;">
-				<fieldset class="temp-setting-fieldset">
-					<legend class="temp-setting-legend"><strong><?php esc_html_e( 'Default Settings', 'runthings-taxonomy-template' ); ?></strong></legend>
-					<form action="" method="post" enctype="multipart/form-data">
-						<?php wp_nonce_field( 'template_settings_action_reset' ); ?>
-						<input type="submit" name="Submit" value="<?php esc_attr_e( 'Default Setting', 'runthings-taxonomy-template' ); ?>" class="tmp-btn" />
-						<input type="hidden" name="template_reset" value="reset" style="display:none;" />
-					</form>
-					<p class="temp-summery"><?php esc_html_e( 'Note: If you are using default setting then taxonomy template will show only on default post category.', 'runthings-taxonomy-template' ); ?></p>
-				</fieldset>
+			</div>
+
+			<div class="card">
+				<h2><?php esc_html_e( 'Reset to Defaults', 'runthings-taxonomy-template' ); ?></h2>
+				<form action="" method="post">
+					<?php wp_nonce_field( 'template_settings_action_reset' ); ?>
+					<p class="description"><?php esc_html_e( 'Reset all settings to defaults. Only the default post category will have template selection enabled.', 'runthings-taxonomy-template' ); ?></p>
+					<p>
+						<input type="hidden" name="template_reset" value="reset" />
+						<?php submit_button( __( 'Reset to Defaults', 'runthings-taxonomy-template' ), 'secondary', 'Submit', false ); ?>
+					</p>
+				</form>
 			</div>
 		</div>
 		<?php

@@ -52,8 +52,6 @@ class Plugin {
 				add_filter( 'plugin_action_links_' . plugin_basename( RUNTHINGS_TAXONOMY_TEMPLATE_FILE ), array( $this, 'add_settings_link' ) );
 			}
 
-			add_action( 'admin_init', array( $this, 'enqueue_styles' ) );
-
 			$enabled_taxonomies = array();
 			$taxonomies_option  = get_option( 'runthings_taxonomy_template_taxonomies' );
 			if ( $taxonomies_option ) {
@@ -141,21 +139,6 @@ class Plugin {
 			$settings_link = '<a href="' . admin_url( 'admin.php?page=runthings_taxonomy_template_settings' ) . '">' . __( 'Settings', 'runthings-taxonomy-template' ) . '</a>';
 			array_unshift( $links, $settings_link );
 			return $links;
-		}
-
-		/**
-		 * Enqueue admin styles
-		 *
-		 * @return void
-		 */
-		public function enqueue_styles() {
-			wp_register_style(
-				'runthings-taxonomy-template-admin',
-				RUNTHINGS_TAXONOMY_TEMPLATE_URL . 'assets/css/template-style.css',
-				array(),
-				RUNTHINGS_TAXONOMY_TEMPLATE_VERSION
-			);
-			wp_enqueue_style( 'runthings-taxonomy-template-admin' );
 		}
 
 		/**
