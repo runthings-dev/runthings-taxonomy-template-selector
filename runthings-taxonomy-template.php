@@ -109,13 +109,12 @@ class Plugin {
 		 * @return void
 		 */
 		public function add_admin_menu() {
-			add_menu_page(
-				'Taxonomy Template',
-				'Taxonomy Template',
+			add_options_page(
+				'Taxonomy Templates',
+				'Taxonomy Templates',
 				'manage_options',
 				'runthings_taxonomy_template_settings',
-				array( $this, 'render_settings_page' ),
-				'dashicons-editor-ul'
+				array( $this, 'render_settings_page' )
 			);
 		}
 
@@ -125,7 +124,7 @@ class Plugin {
 		 * @return void
 		 */
 		public function render_settings_page() {
-			echo '<h2>' . esc_html__( 'Taxonomy Template', 'runthings-taxonomy-template' ) . '</h2>';
+			echo '<h1>' . esc_html__( 'Taxonomy Templates', 'runthings-taxonomy-template' ) . '</h1>';
 			include RUNTHINGS_TAXONOMY_TEMPLATE_DIR . 'admin-form.php';
 		}
 
@@ -136,7 +135,7 @@ class Plugin {
 		 * @return array
 		 */
 		public function add_settings_link( $links ) {
-			$settings_link = '<a href="' . admin_url( 'admin.php?page=runthings_taxonomy_template_settings' ) . '">' . __( 'Settings', 'runthings-taxonomy-template' ) . '</a>';
+			$settings_link = '<a href="' . admin_url( 'options-general.php?page=runthings_taxonomy_template_settings' ) . '">' . __( 'Settings', 'runthings-taxonomy-template' ) . '</a>';
 			array_unshift( $links, $settings_link );
 			return $links;
 		}
