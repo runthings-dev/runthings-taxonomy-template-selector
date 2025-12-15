@@ -40,12 +40,15 @@ class Admin {
 	}
 
 	/**
-	 * Get category templates from theme
+	 * Get taxonomy templates from theme
+	 *
+	 * Scans for "Taxonomy Template:" header (preferred) and
+	 * "Category Template:" header (legacy, for backwards compatibility).
 	 *
 	 * @return array
 	 */
-	public function get_category_templates() {
-		$post_templates = array();
+	public function get_taxonomy_templates() {
+		$templates = array();
 
 		$theme_dir      = get_template_directory();
 		$stylesheet_dir = get_stylesheet_directory();
@@ -73,17 +76,24 @@ class Admin {
 				}
 
 				$name = '';
-				if ( preg_match( '|Category Template:(.*)$|mi', $template_data, $name ) ) {
-					$name = trim( preg_replace( '/\s*(?:\*\/|\?>).*/', '', $name[1] ) );
+
+				// Preferred: "Taxonomy Template:" header.
+				if ( preg_match( '|Taxonomy Template:(.*)$|mi', $template_data, $match ) ) {
+					$name = trim( preg_replace( '/\s*(?:\*\/|\?>).*/', '', $match[1] ) );
+				}
+
+				// Legacy fallback: "Category Template:" header.
+				if ( empty( $name ) && preg_match( '|Category Template:(.*)$|mi', $template_data, $match ) ) {
+					$name = trim( preg_replace( '/\s*(?:\*\/|\?>).*/', '', $match[1] ) );
 				}
 
 				if ( ! empty( $name ) ) {
-					$post_templates[ trim( $name ) ] = $basename;
+					$templates[ trim( $name ) ] = $basename;
 				}
 			}
 		}
 
-		return $post_templates;
+		return $templates;
 	}
 
 	/**
@@ -120,7 +130,7 @@ class Admin {
 	 * @return void
 	 */
 	public function render_template_dropdown( $default = '' ) {
-		$templates = $this->get_category_templates();
+		$templates = $this->get_taxonomy_templates();
 		ksort( $templates );
 		foreach ( array_keys( $templates ) as $template ) {
 			$selected = ( $default === $templates[ $template ] ) ? ' selected="selected"' : '';
