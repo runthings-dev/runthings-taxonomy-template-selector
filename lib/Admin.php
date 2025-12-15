@@ -50,13 +50,18 @@ class Admin {
 	public function get_taxonomy_templates() {
 		$templates = array();
 
-		$theme_dir      = get_template_directory();
+		$theme_dir = get_template_directory();
 		$stylesheet_dir = get_stylesheet_directory();
 
 		$dirs_to_scan = array( $theme_dir );
 		if ( $stylesheet_dir !== $theme_dir ) {
 			$dirs_to_scan[] = $stylesheet_dir;
 		}
+
+		$headers = array(
+			'TaxonomyTemplate' => 'Taxonomy Template',
+			'CategoryTemplate' => 'Category Template', // Legacy support.
+		);
 
 		foreach ( $dirs_to_scan as $dir ) {
 			$files = glob( $dir . '/*.php' );
@@ -70,22 +75,12 @@ class Admin {
 					continue;
 				}
 
-				$template_data = file_get_contents( $template );
-				if ( false === $template_data ) {
-					continue;
-				}
+				$file_data = get_file_data( $template, $headers );
 
-				$name = '';
-
-				// Preferred: "Taxonomy Template:" header.
-				if ( preg_match( '|Taxonomy Template:(.*)$|mi', $template_data, $match ) ) {
-					$name = trim( preg_replace( '/\s*(?:\*\/|\?>).*/', '', $match[1] ) );
-				}
-
-				// Legacy fallback: "Category Template:" header.
-				if ( empty( $name ) && preg_match( '|Category Template:(.*)$|mi', $template_data, $match ) ) {
-					$name = trim( preg_replace( '/\s*(?:\*\/|\?>).*/', '', $match[1] ) );
-				}
+				// Preferred: "Taxonomy Template:" header, fallback to legacy "Category Template:".
+				$name = ! empty( $file_data['TaxonomyTemplate'] )
+					? $file_data['TaxonomyTemplate']
+					: $file_data['CategoryTemplate'];
 
 				if ( ! empty( $name ) ) {
 					$templates[ trim( $name ) ] = $basename;
