@@ -49,6 +49,7 @@ class Plugin {
 
 			if ( is_admin() ) {
 				add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
+				add_filter( 'plugin_action_links_' . plugin_basename( RUNTHINGS_TAXONOMY_TEMPLATE_FILE ), array( $this, 'add_settings_link' ) );
 			}
 
 			add_action( 'admin_init', array( $this, 'enqueue_styles' ) );
@@ -128,6 +129,18 @@ class Plugin {
 		public function render_settings_page() {
 			echo '<h2>' . esc_html__( 'Taxonomy Template', 'runthings-taxonomy-template' ) . '</h2>';
 			include RUNTHINGS_TAXONOMY_TEMPLATE_DIR . 'admin-form.php';
+		}
+
+		/**
+		 * Add settings link on plugins page
+		 *
+		 * @param array $links Existing links.
+		 * @return array
+		 */
+		public function add_settings_link( $links ) {
+			$settings_link = '<a href="' . admin_url( 'admin.php?page=runthings_taxonomy_template_settings' ) . '">' . __( 'Settings', 'runthings-taxonomy-template' ) . '</a>';
+			array_unshift( $links, $settings_link );
+			return $links;
 		}
 
 		/**
