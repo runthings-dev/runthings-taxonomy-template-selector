@@ -52,7 +52,7 @@ new Template_Loader();
 function activate() {
 	$old_mappings = get_option( 'category_templates' );
 
-	if ( $old_mappings && ! get_option( 'runthings_taxonomy_template_mappings' ) ) {
+	if ( is_array( $old_mappings ) && ! get_option( 'runthings_taxonomy_template_mappings' ) ) {
 		add_option( 'runthings_taxonomy_template_mappings', $old_mappings );
 	}
 }
