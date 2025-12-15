@@ -6,6 +6,7 @@ Requires PHP: 7.4
 Tested up to: 6.9
 Stable tag: 1.0.0
 License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Assign templates to categories and other taxonomies, just like page templates.
 
@@ -14,6 +15,14 @@ Assign templates to categories and other taxonomies, just like page templates.
 Assign custom templates to categories and other taxonomies, similar to how WordPress page templates work.
 
 Template selection is automatically enabled for all public taxonomies. Edit any term to choose a custom template.
+
+**Features:**
+
+* Zero configuration - works out of the box for all public taxonomies
+* Choose templates per-term from the term edit screen
+* Works with categories, tags, and custom taxonomies
+* Backwards compatible with legacy "Category Template:" headers
+* Lightweight with no dependencies
 
 == Installation ==
 
@@ -60,15 +69,15 @@ Yes. Use the `runthings_taxonomy_template_dirs` filter to add additional directo
     return $dirs;
 } );`
 
-= Upgrading from Advanced Category Template =
+= How do I upgrade from Advanced Category Template? =
 
-This plugin is a fork of the original "Advanced Category Template" plugin by Praveen Goswami. 
+This plugin is a fork of the original "Advanced Category Template" plugin by Praveen Goswami. It was adopted because the original plugin was removed from the WordPress.org plugin directory due to security issues.
 
-It was adopted because the original plugin was removed from the WordPress.org plugin directory due to security issues.
+Your existing template mappings will be migrated automatically when you activate this plugin. You can safely deactivate and delete the old plugin in any order.
 
-Your existing template mappings will be migrated automatically when you activate this plugin. 
+== Screenshots ==
 
-You can safely deactivate and delete the old plugin in any order.
+1. Template selection dropdown on the term edit screen.
 
 == Changelog ==
 
@@ -80,12 +89,3 @@ You can safely deactivate and delete the old plugin in any order.
 * Renamed to runthings-taxonomy-template
 * Auto-enabled for all public taxonomies (no settings page needed)
 * Added support for "Taxonomy Template:" header (with backwards compatibility for "Category Template:")
-
-== Features ==
-
-* Zero configuration - works out of the box for all public taxonomies
-* Choose templates per-term from the term edit screen
-* Works with categories, tags, and custom taxonomies
-* Backwards compatible with legacy "Category Template:" headers
-* Lightweight with no dependencies
-
