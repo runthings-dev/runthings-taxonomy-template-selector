@@ -116,7 +116,7 @@ class Plugin {
 				'manage_options',
 				'runthings_taxonomy_template_settings',
 				array( $this, 'render_settings_page' ),
-				RUNTHINGS_TAXONOMY_TEMPLATE_URL . 'assets/ico.png'
+				'dashicons-editor-ul'
 			);
 		}
 
