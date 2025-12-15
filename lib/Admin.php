@@ -58,6 +58,16 @@ class Admin {
 			$dirs_to_scan[] = $stylesheet_dir;
 		}
 
+		/**
+		 * Filter the directories scanned for taxonomy templates.
+		 *
+		 * By default, scans the root of parent and child theme directories.
+		 * Does not scan subdirectories - add full paths to include additional folders.
+		 *
+		 * @param array $dirs_to_scan Array of absolute directory paths to scan.
+		 */
+		$dirs_to_scan = apply_filters( 'runthings_taxonomy_template_dirs', $dirs_to_scan );
+
 		$headers = array(
 			'TaxonomyTemplate' => 'Taxonomy Template',
 			'CategoryTemplate' => 'Category Template', // Legacy support.
