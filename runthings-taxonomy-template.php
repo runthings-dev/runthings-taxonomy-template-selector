@@ -47,29 +47,26 @@ class Plugin {
 		public function __construct() {
 			register_activation_hook( RUNTHINGS_TAXONOMY_TEMPLATE_FILE, array( $this, 'activate' ) );
 
-			if ( is_admin() ) {
-				add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
-				add_filter( 'plugin_action_links_' . plugin_basename( RUNTHINGS_TAXONOMY_TEMPLATE_FILE ), array( $this, 'add_settings_link' ) );
-			}
+			add_filter( 'taxonomy_template', array( $this, 'filter_taxonomy_template' ) );
+			add_filter( 'category_template', array( $this, 'filter_category_template' ) );
 
-			$enabled_taxonomies = array();
-			$taxonomies_option  = get_option( 'runthings_taxonomy_template_taxonomies' );
-			if ( $taxonomies_option ) {
-				$enabled_taxonomies = explode( ',', $taxonomies_option );
-			}
+			// Enable for all public taxonomies.
+			add_action( 'init', array( $this, 'register_taxonomy_hooks' ), 99 );
+		}
 
-			$is_disabled = get_option( 'runthings_taxonomy_template_disabled' );
+		/**
+		 * Register hooks for all public taxonomies
+		 *
+		 * @return void
+		 */
+		public function register_taxonomy_hooks() {
+			$taxonomies = get_taxonomies( array( 'public' => true ), 'names' );
 
-			if ( ! empty( $enabled_taxonomies ) && $is_disabled != 1 ) {
-				add_filter( 'taxonomy_template', array( $this, 'filter_taxonomy_template' ) );
-				add_filter( 'category_template', array( $this, 'filter_category_template' ) );
-
-				foreach ( $enabled_taxonomies as $taxonomy_name ) {
-					add_action( $taxonomy_name . '_edit_form_fields', array( $this, 'render_meta_box' ) );
-					add_action( $taxonomy_name . '_add_form_fields', array( $this, 'render_meta_box' ) );
-					add_action( 'created_' . $taxonomy_name, array( $this, 'save_template' ) );
-					add_action( 'edited_' . $taxonomy_name, array( $this, 'save_template' ) );
-				}
+			foreach ( $taxonomies as $taxonomy_name ) {
+				add_action( $taxonomy_name . '_edit_form_fields', array( $this, 'render_meta_box' ) );
+				add_action( $taxonomy_name . '_add_form_fields', array( $this, 'render_meta_box' ) );
+				add_action( 'created_' . $taxonomy_name, array( $this, 'save_template' ) );
+				add_action( 'edited_' . $taxonomy_name, array( $this, 'save_template' ) );
 			}
 		}
 
@@ -80,64 +77,11 @@ class Plugin {
 		 */
 		public function activate() {
 			// Migrate from old plugin options if they exist.
-			$old_taxonomies = get_option( 'advance_category_template' );
-			$old_status     = get_option( 'category_template_status' );
-			$old_mappings   = get_option( 'category_templates' );
+			$old_mappings = get_option( 'category_templates' );
 
-			if ( $old_taxonomies && ! get_option( 'runthings_taxonomy_template_taxonomies' ) ) {
-				add_option( 'runthings_taxonomy_template_taxonomies', $old_taxonomies );
-			}
-			if ( false !== $old_status && ! get_option( 'runthings_taxonomy_template_disabled' ) ) {
-				add_option( 'runthings_taxonomy_template_disabled', $old_status );
-			}
 			if ( $old_mappings && ! get_option( 'runthings_taxonomy_template_mappings' ) ) {
 				add_option( 'runthings_taxonomy_template_mappings', $old_mappings );
 			}
-
-			// Set defaults if nothing to migrate.
-			if ( ! get_option( 'runthings_taxonomy_template_taxonomies' ) ) {
-				add_option( 'runthings_taxonomy_template_taxonomies', 'category' );
-			}
-			if ( ! get_option( 'runthings_taxonomy_template_disabled' ) ) {
-				add_option( 'runthings_taxonomy_template_disabled', '0' );
-			}
-		}
-
-		/**
-		 * Add admin menu
-		 *
-		 * @return void
-		 */
-		public function add_admin_menu() {
-			add_options_page(
-				'Taxonomy Templates',
-				'Taxonomy Templates',
-				'manage_options',
-				'runthings_taxonomy_template_settings',
-				array( $this, 'render_settings_page' )
-			);
-		}
-
-		/**
-		 * Render settings page
-		 *
-		 * @return void
-		 */
-		public function render_settings_page() {
-			echo '<h1>' . esc_html__( 'Taxonomy Templates', 'runthings-taxonomy-template' ) . '</h1>';
-			include RUNTHINGS_TAXONOMY_TEMPLATE_DIR . 'admin-form.php';
-		}
-
-		/**
-		 * Add settings link on plugins page
-		 *
-		 * @param array $links Existing links.
-		 * @return array
-		 */
-		public function add_settings_link( $links ) {
-			$settings_link = '<a href="' . admin_url( 'options-general.php?page=runthings_taxonomy_template_settings' ) . '">' . __( 'Settings', 'runthings-taxonomy-template' ) . '</a>';
-			array_unshift( $links, $settings_link );
-			return $links;
 		}
 
 		/**
