@@ -12,15 +12,14 @@ Assign custom templates to categories and taxonomies, just like page templates.
 
 Assign custom templates to categories and other taxonomies, similar to how WordPress page templates work.
 
-Select which taxonomies should have template selection enabled from the plugin settings. Then edit any term in those taxonomies to choose a custom template.
+Template selection is automatically enabled for all public taxonomies. Edit any term to choose a custom template.
 
 == Installation ==
 
 1. Upload the plugin to your `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Dashboard => Taxonomy Template and select which taxonomies to enable
-4. Create template files in your theme with the header comment `Category Template: Your Template Name`
-5. Edit a category/term and select your template from the dropdown
+3. Create template files in your theme with the header comment `Taxonomy Template: Your Template Name`
+4. Edit a category/term and select your template from the dropdown
 
 == Frequently Asked Questions ==
 
@@ -30,12 +29,26 @@ Add a PHP file to your theme directory with this header comment:
 
 `<?php
 /**
- * Category Template: My Custom Template
+ * Taxonomy Template: My Custom Template
  */`
 
 = Which taxonomies are supported? =
 
-All public taxonomies including categories, custom taxonomies from plugins like WooCommerce product categories, and any custom post type taxonomies.
+All public taxonomies including categories, tags, custom taxonomies from plugins like WooCommerce product categories, and any custom post type taxonomies.
+
+= I'm using "Category Template:" in my theme files. Do I need to change it? =
+
+No. The plugin supports both `Taxonomy Template:` (recommended) and `Category Template:` (legacy) headers for backwards compatibility. Your existing templates will continue to work.
+
+= Can I prevent data deletion when uninstalling? =
+
+Yes. Add this to your wp-config.php before uninstalling:
+
+`define( 'RUNTHINGS_TAXONOMY_TEMPLATE_KEEP_DATA', true );`
+
+= Why don't I see the template dropdown? =
+
+Make sure your theme has at least one PHP file with either a `Taxonomy Template:` or `Category Template:` header comment. The dropdown only appears if templates are available to select.
 
 == Changelog ==
 
@@ -45,11 +58,14 @@ All public taxonomies including categories, custom taxonomies from plugins like 
 * Fixed security issues
 * Added proper sanitization and escaping
 * Renamed to runthings-taxonomy-template
+* Auto-enabled for all public taxonomies (no settings page needed)
+* Added support for "Taxonomy Template:" header (with backwards compatibility for "Category Template:")
 
 == Features ==
 
-* Select which taxonomies should have template selection enabled
+* Zero configuration - works out of the box for all public taxonomies
 * Choose templates per-term from the term edit screen
-* Works with categories and custom taxonomies
+* Works with categories, tags, and custom taxonomies
+* Backwards compatible with legacy "Category Template:" headers
 * Lightweight with no dependencies
 
