@@ -98,6 +98,16 @@ class Admin {
 			}
 		}
 
+		/**
+		 * Filter the discovered taxonomy templates.
+		 *
+		 * Allows adding templates without headers, removing templates,
+		 * or modifying template display names.
+		 *
+		 * @param array $templates Array of templates as 'Template Name' => 'filename.php'.
+		 */
+		$templates = apply_filters( 'runthings_taxonomy_template_list', $templates );
+
 		return $templates;
 	}
 
