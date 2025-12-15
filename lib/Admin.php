@@ -144,7 +144,7 @@ class Admin {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'edit_term', $term_id ) ) {
 			return;
 		}
 
