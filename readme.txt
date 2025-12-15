@@ -50,10 +50,20 @@ Yes. Add this to your wp-config.php before uninstalling:
 
 Make sure your theme has at least one PHP file with either a `Taxonomy Template:` or `Category Template:` header comment. The dropdown only appears if templates are available to select.
 
+= Upgrading from Advanced Category Template =
+
+This plugin is a fork of the original "Advanced Category Template" plugin by Praveen Goswami. 
+
+It was adopted because the original plugin was removed from the WordPress.org plugin directory due to security issues.
+
+Your existing template mappings will be migrated automatically when you activate this plugin. 
+
+You can safely deactivate and delete the old plugin in any order.
+
 == Changelog ==
 
 = 1.0.0 =
-* Forked from Advanced Category Template
+* Forked from Advanced Category Template by Praveen Goswami
 * Added namespace and modern PHP structure
 * Fixed security issues
 * Added proper sanitization and escaping
