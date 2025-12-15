@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Taxonomy Template
- * Description: Add template selection to categories and other taxonomies
+ * Description: Assign archive templates to categories, tags and other taxonomy terms
  * Author: runthingsdev
  * Author URI: https://runthings.dev/
  * Version: 1.0.0

@@ -8,13 +8,13 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Assign templates to categories and other taxonomies, just like page templates.
+Assign archive templates to categories, tags and other taxonomy terms.
 
 == Description ==
 
-Assign custom templates to categories and other taxonomies, similar to how WordPress page templates work.
+Assign custom archive templates to categories, tags and other taxonomy terms, similar to how WordPress page templates work.
 
-Template selection is automatically enabled for all public taxonomies. Edit any term to choose a custom template.
+Template selection is automatically enabled for all public taxonomies. Edit any term to choose a custom archive template.
 
 **Features:**
 
