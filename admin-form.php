@@ -87,13 +87,13 @@ class Admin_Form {
 			} else {
 				return '<div id="message" class="error"><p>' . esc_html__( 'Security checks failed.', 'runthings-taxonomy-template' ) . '</p></div>';
 			}
-		} elseif ( isset( $_REQUEST['template_reset'] ) && is_string( $_REQUEST['template_reset'] ) ) {
+		} elseif ( isset( $_POST['template_reset'] ) && is_string( $_POST['template_reset'] ) ) {
 			if ( wp_verify_nonce( $runthings_nonce, 'template_settings_action_reset' ) ) {
 				return self::reset_template_settings();
 			} else {
 				return '<div id="message" class="error"><p>' . esc_html__( 'Security checks failed.', 'runthings-taxonomy-template' ) . '</p></div>';
 			}
-		} elseif ( isset( $_REQUEST['plugin_disable'] ) && is_string( $_REQUEST['plugin_disable'] ) ) {
+		} elseif ( isset( $_POST['plugin_disable'] ) && is_string( $_POST['plugin_disable'] ) ) {
 			if ( wp_verify_nonce( $runthings_nonce, 'template_settings_action_disable' ) ) {
 				$runthings_disable = isset( $_POST['disable'] ) ? sanitize_text_field( wp_unslash( $_POST['disable'] ) ) : '';
 				return self::disable_plugin_settings( $runthings_disable );
