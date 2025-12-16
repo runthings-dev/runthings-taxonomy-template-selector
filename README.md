@@ -107,10 +107,10 @@ Your existing template mappings will be migrated automatically when you activate
 
 ## Changelog
 
-### 1.0.0
+### 1.0.0 - 16th December 2025
 * Forked from Advanced Category Template by Praveen Goswami
 * Added namespace and modern PHP structure
-* Fixed security issues
+* Fixed security issues found in original plugin
 * Added proper sanitization and escaping
 * Renamed to runthings-taxonomy-template
 * Auto-enabled for all public taxonomies (no settings page needed)
