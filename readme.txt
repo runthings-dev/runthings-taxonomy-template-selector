@@ -16,7 +16,7 @@ Assign custom archive templates to categories, tags and other taxonomy terms, si
 
 Template selection is automatically enabled for all public taxonomies. Edit any term to choose a custom archive template.
 
-**Features:**
+= Features: =
 
 * Zero configuration - works out of the box for all public taxonomies
 * Choose templates per-term from the term edit screen
@@ -24,7 +24,7 @@ Template selection is automatically enabled for all public taxonomies. Edit any 
 * Backwards compatible with legacy "Category Template:" headers
 * Lightweight with no dependencies
 
-**Links:**
+= Links: =
 
 * [Plugin page](https://runthings.dev/wordpress-plugins/taxonomy-template/)
 * [GitHub repository](https://github.com/runthings-dev/runthings-taxonomy-template)
