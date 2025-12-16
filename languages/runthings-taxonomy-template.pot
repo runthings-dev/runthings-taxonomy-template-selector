@@ -1,0 +1,45 @@
+# Copyright (C) 2025 runthingsdev
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Taxonomy Template 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/runthings-taxonomy-template\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-12-16T00:47:55+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: runthings-taxonomy-template\n"
+
+#. Plugin Name of the plugin
+#: runthings-taxonomy-template.php
+#: lib/Admin.php:130
+msgid "Taxonomy Template"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: runthings-taxonomy-template.php
+msgid "https://runthings.dev/wordpress-plugins/taxonomy-template/"
+msgstr ""
+
+#. Description of the plugin
+#: runthings-taxonomy-template.php
+msgid "Assign archive templates to categories, tags and other taxonomy terms"
+msgstr ""
+
+#. Author of the plugin
+#: runthings-taxonomy-template.php
+msgid "runthingsdev"
+msgstr ""
+
+#. Author URI of the plugin
+#: runthings-taxonomy-template.php
+msgid "https://runthings.dev/"
+msgstr ""
+
+#: lib/Admin.php:133
+msgid "Default Template"
+msgstr ""
