@@ -24,6 +24,11 @@ Template selection is automatically enabled for all public taxonomies. Edit any 
 * Backwards compatible with legacy "Category Template:" headers
 * Lightweight with no dependencies
 
+**Links:**
+
+* [Plugin page](https://runthings.dev/wordpress-plugins/taxonomy-template/)
+* [GitHub repository](https://github.com/runthings-dev/runthings-taxonomy-template)
+
 == Installation ==
 
 1. Upload the plugin to your `/wp-content/plugins/` directory

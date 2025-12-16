@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Taxonomy Template
+ * Plugin URI: https://runthings.dev/wordpress-plugins/taxonomy-template/
  * Description: Assign archive templates to categories, tags and other taxonomy terms
  * Author: runthingsdev
  * Author URI: https://runthings.dev/
