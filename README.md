@@ -19,7 +19,6 @@ Template selection is automatically enabled for all public taxonomies. Edit any 
 * Choose templates per-term from the term edit screen
 * Works with categories, tags, and custom taxonomies
 * Backwards compatible with legacy "Category Template:" headers
-* Lightweight with no dependencies
 
 ### Links:
 
