@@ -149,7 +149,7 @@ class Admin {
 		ksort( $templates );
 		foreach ( array_keys( $templates ) as $template ) {
 			$selected = ( $default === $templates[ $template ] ) ? ' selected="selected"' : '';
-			echo "\n\t<option value='" . esc_attr( $templates[ $template ] ) . "'" . esc_attr( $selected ) . '>' . esc_html( $template ) . '</option>';
+			echo "\n\t<option value='" . esc_attr( $templates[ $template ] ) . "'" . $selected . '>' . esc_html( $template ) . '</option>';
 		}
 	}
 
