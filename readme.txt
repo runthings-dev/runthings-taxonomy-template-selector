@@ -99,6 +99,10 @@ Your existing template mappings will be migrated automatically when you activate
 
 == Changelog ==
 
+= 1.1.0 - 2nd January 2026 =
+* Renamed to runthings-taxonomy-template-selector for WP.org submission compliance
+* Moved assets into .wordpress-org folder
+
 = 1.0.0 - 16th December 2025 =
 * Forked from Advanced Category Template by Praveen Goswami
 * Added namespace and modern PHP structure
@@ -109,6 +113,9 @@ Your existing template mappings will be migrated automatically when you activate
 * Added support for "Taxonomy Template:" header (with backwards compatibility for "Category Template:")
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Seamless upgrade. Plugin renamed for WP.org compliance - all settings preserved.
 
 = 1.0.0 =
 Initial release of the plugin. No upgrade steps required.
