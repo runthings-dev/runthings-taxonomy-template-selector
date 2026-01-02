@@ -2,10 +2,10 @@
 /**
  * Template loader
  *
- * @package Runthings_Taxonomy_Template
+ * @package Runthings_Taxonomy_Template_Selector
  */
 
-namespace Runthings\TaxonomyTemplate;
+namespace Runthings\TaxonomyTemplateSelector;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,7 +42,7 @@ class Template_Loader {
 		if ( isset( $template_mappings[ $term_id ] ) && 'default' !== $template_mappings[ $term_id ] ) {
 			$located_template = locate_template( $template_mappings[ $term_id ] );
 			if ( ! empty( $located_template ) ) {
-				return apply_filters( 'runthings_taxonomy_template_found', $located_template );
+				return apply_filters( 'runthings_taxonomy_template_selector_found', $located_template );
 			}
 		}
 

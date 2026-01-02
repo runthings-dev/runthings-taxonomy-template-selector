@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Taxonomy Template
- * Plugin URI: https://runthings.dev/wordpress-plugins/taxonomy-template/
+ * Plugin Name: Taxonomy Template Selector
+ * Plugin URI: https://runthings.dev/wordpress-plugins/taxonomy-template-selector/
  * Description: Assign archive templates to categories, tags and other taxonomy terms
  * Author: runthingsdev
  * Author URI: https://runthings.dev/
@@ -10,9 +10,9 @@
  * Requires PHP: 7.4
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: runthings-taxonomy-template
+ * Text Domain: runthings-taxonomy-template-selector
  *
- * @package Runthings_Taxonomy_Template
+ * @package Runthings_Taxonomy_Template_Selector
  */
 
 /*
@@ -30,19 +30,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-namespace Runthings\TaxonomyTemplate;
+namespace Runthings\TaxonomyTemplateSelector;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'RUNTHINGS_TAXONOMY_TEMPLATE_VERSION', '1.0.0' );
-define( 'RUNTHINGS_TAXONOMY_TEMPLATE_FILE', __FILE__ );
-define( 'RUNTHINGS_TAXONOMY_TEMPLATE_DIR', plugin_dir_path( __FILE__ ) );
+define( 'RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_VERSION', '1.0.0' );
+define( 'RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_FILE', __FILE__ );
+define( 'RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR', plugin_dir_path( __FILE__ ) );
 
 // Load classes.
-require_once RUNTHINGS_TAXONOMY_TEMPLATE_DIR . 'lib/Admin.php';
-require_once RUNTHINGS_TAXONOMY_TEMPLATE_DIR . 'lib/Template_Loader.php';
+require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Admin.php';
+require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Template_Loader.php';
 
 // Initialize.
 new Admin();
@@ -60,4 +60,4 @@ function activate() {
 		add_option( 'runthings_taxonomy_template_mappings', $old_mappings );
 	}
 }
-register_activation_hook( RUNTHINGS_TAXONOMY_TEMPLATE_FILE, __NAMESPACE__ . '\activate' );
+register_activation_hook( RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_FILE, __NAMESPACE__ . '\activate' );

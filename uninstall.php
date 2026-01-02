@@ -2,15 +2,15 @@
 /**
  * Uninstall handler
  *
- * @package Runthings_Taxonomy_Template
+ * @package Runthings_Taxonomy_Template_Selector
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Allow users to preserve data by defining RUNTHINGS_TAXONOMY_TEMPLATE_KEEP_DATA in wp-config.php.
-if ( defined( 'RUNTHINGS_TAXONOMY_TEMPLATE_KEEP_DATA' ) && RUNTHINGS_TAXONOMY_TEMPLATE_KEEP_DATA ) {
+// Allow users to preserve data by defining RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_KEEP_DATA in wp-config.php.
+if ( defined( 'RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_KEEP_DATA' ) && RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_KEEP_DATA ) {
 	return;
 }
 

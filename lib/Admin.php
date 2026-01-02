@@ -2,10 +2,10 @@
 /**
  * Admin UI handler
  *
- * @package Runthings_Taxonomy_Template
+ * @package Runthings_Taxonomy_Template_Selector
  */
 
-namespace Runthings\TaxonomyTemplate;
+namespace Runthings\TaxonomyTemplateSelector;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -66,7 +66,7 @@ class Admin {
 		 *
 		 * @param array $dirs_to_scan Array of absolute directory paths to scan.
 		 */
-		$dirs_to_scan = apply_filters( 'runthings_taxonomy_template_dirs', $dirs_to_scan );
+		$dirs_to_scan = apply_filters( 'runthings_taxonomy_template_selector_dirs', $dirs_to_scan );
 
 		$headers = array(
 			'TaxonomyTemplate' => 'Taxonomy Template',
@@ -106,7 +106,7 @@ class Admin {
 		 *
 		 * @param array $templates Array of templates as 'Template Name' => 'filename.php'.
 		 */
-		$templates = apply_filters( 'runthings_taxonomy_template_list', $templates );
+		$templates = apply_filters( 'runthings_taxonomy_template_selector_list', $templates );
 
 		return $templates;
 	}
@@ -125,12 +125,12 @@ class Admin {
 		$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
 		$selected_template = isset( $template_mappings[ $term_id ] ) ? $template_mappings[ $term_id ] : false;
 		?>
-		<?php wp_nonce_field( 'runthings_taxonomy_template_nonce_action', 'runthings_taxonomy_template_nonce_field' ); ?>
+		<?php wp_nonce_field( 'runthings_taxonomy_template_selector_nonce_action', 'runthings_taxonomy_template_selector_nonce_field' ); ?>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="runthings_taxonomy_template"><?php esc_html_e( 'Taxonomy Template', 'runthings-taxonomy-template' ); ?></label></th>
+			<th scope="row" valign="top"><label for="runthings_taxonomy_template_selector"><?php esc_html_e( 'Taxonomy Template', 'runthings-taxonomy-template-selector' ); ?></label></th>
 			<td>
-				<select name="runthings_taxonomy_template" id="runthings_taxonomy_template">
-					<option value='default'><?php esc_html_e( 'Default Template', 'runthings-taxonomy-template' ); ?></option>
+				<select name="runthings_taxonomy_template_selector" id="runthings_taxonomy_template_selector">
+					<option value='default'><?php esc_html_e( 'Default Template', 'runthings-taxonomy-template-selector' ); ?></option>
 					<?php $this->render_template_dropdown( $selected_template ); ?>
 				</select>
 			</td>
@@ -160,12 +160,12 @@ class Admin {
 	 * @return void
 	 */
 	public function save_template( $term_id ) {
-		if ( ! isset( $_POST['runthings_taxonomy_template_nonce_field'] ) ) {
+		if ( ! isset( $_POST['runthings_taxonomy_template_selector_nonce_field'] ) ) {
 			return;
 		}
 
-		$nonce = sanitize_text_field( wp_unslash( $_POST['runthings_taxonomy_template_nonce_field'] ) );
-		if ( ! wp_verify_nonce( $nonce, 'runthings_taxonomy_template_nonce_action' ) ) {
+		$nonce = sanitize_text_field( wp_unslash( $_POST['runthings_taxonomy_template_selector_nonce_field'] ) );
+		if ( ! wp_verify_nonce( $nonce, 'runthings_taxonomy_template_selector_nonce_action' ) ) {
 			return;
 		}
 
@@ -173,12 +173,12 @@ class Admin {
 			return;
 		}
 
-		if ( isset( $_POST['runthings_taxonomy_template'] ) ) {
+		if ( isset( $_POST['runthings_taxonomy_template_selector'] ) ) {
 			$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
 			if ( ! is_array( $template_mappings ) ) {
 				$template_mappings = array();
 			}
-			$template_mappings[ $term_id ] = sanitize_text_field( wp_unslash( $_POST['runthings_taxonomy_template'] ) );
+			$template_mappings[ $term_id ] = sanitize_text_field( wp_unslash( $_POST['runthings_taxonomy_template_selector'] ) );
 			update_option( 'runthings_taxonomy_template_mappings', $template_mappings );
 		}
 	}
