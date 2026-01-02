@@ -37,7 +37,7 @@ class Template_Loader {
 		}
 
 		$term_id = $queried_term->term_id;
-		$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
+		$template_mappings = get_option( 'runthings_taxonomy_template_selector_mappings' );
 
 		if ( isset( $template_mappings[ $term_id ] ) && 'default' !== $template_mappings[ $term_id ] ) {
 			$located_template = locate_template( $template_mappings[ $term_id ] );

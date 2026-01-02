@@ -122,7 +122,7 @@ class Admin {
 		if ( ! empty( $tag ) && is_object( $tag ) ) {
 			$term_id = $tag->term_id;
 		}
-		$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
+		$template_mappings = get_option( 'runthings_taxonomy_template_selector_mappings' );
 		$selected_template = isset( $template_mappings[ $term_id ] ) ? $template_mappings[ $term_id ] : false;
 		?>
 		<?php wp_nonce_field( 'runthings_taxonomy_template_selector_nonce_action', 'runthings_taxonomy_template_selector_nonce_field' ); ?>
@@ -174,12 +174,12 @@ class Admin {
 		}
 
 		if ( isset( $_POST['runthings_taxonomy_template_selector'] ) ) {
-			$template_mappings = get_option( 'runthings_taxonomy_template_mappings' );
+			$template_mappings = get_option( 'runthings_taxonomy_template_selector_mappings' );
 			if ( ! is_array( $template_mappings ) ) {
 				$template_mappings = array();
 			}
 			$template_mappings[ $term_id ] = sanitize_text_field( wp_unslash( $_POST['runthings_taxonomy_template_selector'] ) );
-			update_option( 'runthings_taxonomy_template_mappings', $template_mappings );
+			update_option( 'runthings_taxonomy_template_selector_mappings', $template_mappings );
 		}
 	}
 }

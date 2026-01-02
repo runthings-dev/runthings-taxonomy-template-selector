@@ -15,5 +15,5 @@ if ( defined( 'RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_KEEP_DATA' ) && RUNTHINGS_TA
 }
 
 // Delete plugin options.
-delete_option( 'runthings_taxonomy_template_mappings' );
+delete_option( 'runthings_taxonomy_template_selector_mappings' );
 

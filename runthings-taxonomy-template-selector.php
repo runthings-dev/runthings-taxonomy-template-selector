@@ -49,15 +49,31 @@ new Admin();
 new Template_Loader();
 
 /**
- * Plugin activation - migrate from old plugin if needed
+ * Plugin activation - migrate from old option names if needed
+ *
+ * Checks for data from:
+ * 1. runthings_taxonomy_template_mappings (v1.0.0 of this plugin)
+ * 2. category_templates (original Advanced Category Template plugin)
  *
  * @return void
  */
 function activate() {
-	$old_mappings = get_option( 'category_templates' );
+	// Skip if new option already exists.
+	if ( get_option( 'runthings_taxonomy_template_selector_mappings' ) ) {
+		return;
+	}
 
-	if ( is_array( $old_mappings ) && ! get_option( 'runthings_taxonomy_template_mappings' ) ) {
-		add_option( 'runthings_taxonomy_template_mappings', $old_mappings );
+	// Try v1.0.0 option name first.
+	$old_mappings = get_option( 'runthings_taxonomy_template_mappings' );
+	if ( is_array( $old_mappings ) ) {
+		add_option( 'runthings_taxonomy_template_selector_mappings', $old_mappings );
+		return;
+	}
+
+	// Try original plugin option name.
+	$legacy_mappings = get_option( 'category_templates' );
+	if ( is_array( $legacy_mappings ) ) {
+		add_option( 'runthings_taxonomy_template_selector_mappings', $legacy_mappings );
 	}
 }
 register_activation_hook( RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_FILE, __NAMESPACE__ . '\activate' );
