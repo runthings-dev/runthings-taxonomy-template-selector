@@ -1,4 +1,4 @@
-=== Taxonomy Template ===
+=== Taxonomy Template Selector ===
 Contributors: runthingsdev
 Tags: category, template, taxonomy, custom template, archive
 Requires at least: 6.4
@@ -26,8 +26,8 @@ Template selection is automatically enabled for all public taxonomies. Edit any 
 
 = Links: =
 
-* [Plugin page](https://runthings.dev/wordpress-plugins/taxonomy-template/)
-* [GitHub repository](https://github.com/runthings-dev/runthings-taxonomy-template)
+* [Plugin page](https://runthings.dev/wordpress-plugins/taxonomy-template-selector/)
+* [GitHub repository](https://github.com/runthings-dev/runthings-taxonomy-template-selector)
 
 == Installation ==
 
@@ -59,7 +59,7 @@ No. The plugin supports both `Taxonomy Template:` (recommended) and `Category Te
 
 Yes. Add this to your wp-config.php before uninstalling:
 
-`define( 'RUNTHINGS_TAXONOMY_TEMPLATE_KEEP_DATA', true );`
+`define( 'RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_KEEP_DATA', true );`
 
 = Why don't I see the template dropdown? =
 
@@ -67,18 +67,18 @@ Make sure your theme has at least one PHP file with either a `Taxonomy Template:
 
 = Can I add custom directories for template scanning? =
 
-Yes. Use the `runthings_taxonomy_template_dirs` filter to add additional directories. Note that subdirectories are not scanned automatically - you must add each folder path explicitly.
+Yes. Use the `runthings_taxonomy_template_selector_dirs` filter to add additional directories. Note that subdirectories are not scanned automatically - you must add each folder path explicitly.
 
-`add_filter( 'runthings_taxonomy_template_dirs', function( $dirs ) {
+`add_filter( 'runthings_taxonomy_template_selector_dirs', function( $dirs ) {
     $dirs[] = get_stylesheet_directory() . '/taxonomy-templates';
     return $dirs;
 } );`
 
 = Can I add or remove templates without modifying theme files? =
 
-Yes. Use the `runthings_taxonomy_template_list` filter to modify the available templates. The filename is a path relative to your theme root - if using a child theme, it checks the child theme first, then falls back to the parent theme.
+Yes. Use the `runthings_taxonomy_template_selector_list` filter to modify the available templates. The filename is a path relative to your theme root - if using a child theme, it checks the child theme first, then falls back to the parent theme.
 
-`add_filter( 'runthings_taxonomy_template_list', function( $templates ) {
+`add_filter( 'runthings_taxonomy_template_selector_list', function( $templates ) {
     // Add a template from theme root
     $templates['My Custom Archive'] = 'custom-archive.php';
     // Add a template from a subdirectory
