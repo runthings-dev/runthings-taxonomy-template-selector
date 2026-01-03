@@ -108,6 +108,7 @@ Your existing template mappings will be migrated automatically when you activate
 
 ### 1.1.0 - 2nd January 2026
 * Renamed to runthings-taxonomy-template-selector for WP.org submission compliance
+* Renamed option key to use consistent prefix (auto-migrates from 1.0.0)
 * Moved assets into .wordpress-org folder
 
 ### 1.0.0 - 16th December 2025
