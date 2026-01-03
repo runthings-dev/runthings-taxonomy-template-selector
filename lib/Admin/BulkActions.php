@@ -137,10 +137,12 @@ class BulkActions {
 	 * @return void
 	 */
 	public function bulk_action_admin_notice() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified in handle_bulk_action before redirect; this just displays the result
 		if ( ! isset( $_GET['taxonomy_template_updated'] ) ) {
 			return;
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified in handle_bulk_action before redirect; intval ensures safe output
 		$count = intval( $_GET['taxonomy_template_updated'] );
 
 		printf(
