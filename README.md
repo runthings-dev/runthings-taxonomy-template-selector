@@ -19,6 +19,7 @@ Template selection is automatically enabled for all public taxonomies. Edit any 
 * Choose templates per-term from the term edit screen
 * Works with categories, tags, and custom taxonomies
 * Bulk edit support - assign templates to multiple terms at once
+* Quick edit support - change templates inline without leaving the list table
 * Optional admin column shows assigned template at a glance (hidden by default)
 * Backwards compatible with legacy "Category Template:" headers
 
@@ -107,6 +108,10 @@ Your existing template mappings will be migrated automatically when you activate
 ![Template selection dropdown](https://raw.githubusercontent.com/runthings-dev/runthings-taxonomy-template-selector/main/.wordpress-org/screenshot-1.png)
 
 ## Changelog
+
+### 1.3.0 - 3rd January 2026
+* Added quick edit support for changing templates inline
+* Fixed form field spacing on add term page
 
 ### 1.2.0 - 3rd January 2026
 * Added optional Template column to taxonomy list tables (hidden by default, enable via Screen Options)

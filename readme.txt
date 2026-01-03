@@ -22,6 +22,7 @@ Template selection is automatically enabled for all public taxonomies. Edit any 
 * Choose templates per-term from the term edit screen
 * Works with categories, tags, and custom taxonomies
 * Bulk edit support - assign templates to multiple terms at once
+* Quick edit support - change templates inline without leaving the list table
 * Optional admin column shows assigned template at a glance (hidden by default)
 * Backwards compatible with legacy "Category Template:" headers
 
@@ -101,6 +102,10 @@ Your existing template mappings will be migrated automatically when you activate
 
 == Changelog ==
 
+= 1.3.0 - 3rd January 2026 =
+* Added quick edit support for changing templates inline
+* Fixed form field spacing on add term page
+
 = 1.2.0 - 3rd January 2026 =
 * Added optional Template column to taxonomy list tables (hidden by default, enable via Screen Options)
 * Added bulk action to assign templates to multiple terms at once
@@ -121,14 +126,14 @@ Your existing template mappings will be migrated automatically when you activate
 
 == Upgrade Notice ==
 
+= 1.3.0 =
+Quick edit support and column display fix.
+
 = 1.2.0 =
 Implement admin column and bulk action support.
 
 = 1.1.0 =
 Seamless upgrade. Plugin renamed for WP.org compliance - all settings preserved.
-
-= 1.0.0 =
-Initial release of the plugin. No upgrade steps required.
 
 == License ==
 
