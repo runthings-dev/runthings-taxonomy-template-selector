@@ -83,6 +83,7 @@ class TermEditor {
 		ksort( $templates );
 		foreach ( array_keys( $templates ) as $template ) {
 			$selected = ( $default === $templates[ $template ] ) ? ' selected="selected"' : '';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $selected is a static string literal
 			echo "\n\t<option value='" . esc_attr( $templates[ $template ] ) . "'" . $selected . '>' . esc_html( $template ) . '</option>';
 		}
 	}
