@@ -39,27 +39,42 @@ class TermEditor {
 	 * @return void
 	 */
 	public function register_hooks( $taxonomy_name ) {
-		add_action( $taxonomy_name . '_edit_form_fields', array( $this, 'render_meta_box' ) );
-		add_action( $taxonomy_name . '_add_form_fields', array( $this, 'render_meta_box' ) );
+		add_action( $taxonomy_name . '_edit_form_fields', array( $this, 'render_edit_form_fields' ) );
+		add_action( $taxonomy_name . '_add_form_fields', array( $this, 'render_add_form_fields' ) );
 		add_action( 'created_' . $taxonomy_name, array( $this, 'save_template' ) );
 		add_action( 'edited_' . $taxonomy_name, array( $this, 'save_template' ) );
 	}
 
 	/**
-	 * Render meta box on taxonomy edit screen
+	 * Render fields on taxonomy add form
 	 *
-	 * @param mixed $tag Term object or empty.
 	 * @return void
 	 */
-	public function render_meta_box( $tag ) {
-		$term_id = '';
-		if ( ! empty( $tag ) && is_object( $tag ) ) {
-			$term_id = $tag->term_id;
-		}
+	public function render_add_form_fields() {
+		wp_nonce_field( 'runthings_taxonomy_template_selector_nonce_action', 'runthings_taxonomy_template_selector_nonce_field' );
+		?>
+		<div class="form-field">
+			<label for="runthings_taxonomy_template_selector"><?php esc_html_e( 'Taxonomy Template', 'runthings-taxonomy-template-selector' ); ?></label>
+			<select name="runthings_taxonomy_template_selector" id="runthings_taxonomy_template_selector">
+				<option value='default'><?php esc_html_e( 'Default Template', 'runthings-taxonomy-template-selector' ); ?></option>
+				<?php $this->render_template_dropdown(); ?>
+			</select>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render fields on taxonomy edit form
+	 *
+	 * @param \WP_Term $tag Term object.
+	 * @return void
+	 */
+	public function render_edit_form_fields( $tag ) {
+		$term_id           = $tag->term_id;
 		$template_mappings = get_option( 'runthings_taxonomy_template_selector_mappings' );
 		$selected_template = isset( $template_mappings[ $term_id ] ) ? $template_mappings[ $term_id ] : false;
+		wp_nonce_field( 'runthings_taxonomy_template_selector_nonce_action', 'runthings_taxonomy_template_selector_nonce_field' );
 		?>
-		<?php wp_nonce_field( 'runthings_taxonomy_template_selector_nonce_action', 'runthings_taxonomy_template_selector_nonce_field' ); ?>
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="runthings_taxonomy_template_selector"><?php esc_html_e( 'Taxonomy Template', 'runthings-taxonomy-template-selector' ); ?></label></th>
 			<td>
