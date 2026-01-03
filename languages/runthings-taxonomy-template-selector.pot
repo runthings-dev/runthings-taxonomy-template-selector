@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Taxonomy Template Selector 1.1.0\n"
+"Project-Id-Version: Taxonomy Template Selector 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/runthings-taxonomy-template-selector\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-02T21:25:52+00:00\n"
+"POT-Creation-Date: 2026-01-03T00:30:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: runthings-taxonomy-template-selector\n"
@@ -39,10 +39,30 @@ msgstr ""
 msgid "https://runthings.dev/"
 msgstr ""
 
-#: lib/Admin.php:130
+#: lib/Admin/BulkActions.php:68
+msgid "Set Template: Default"
+msgstr ""
+
+#. translators: %s: template name
+#: lib/Admin/BulkActions.php:73
+msgid "Set Template: %s"
+msgstr ""
+
+#. translators: %d: number of terms updated
+#: lib/Admin/BulkActions.php:153
+msgid "Template updated for %d term."
+msgid_plural "Template updated for %d terms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/Admin/Column.php:54
+msgid "Template"
+msgstr ""
+
+#: lib/Admin/TermEditor.php:64
 msgid "Taxonomy Template"
 msgstr ""
 
-#: lib/Admin.php:133
+#: lib/Admin/TermEditor.php:67
 msgid "Default Template"
 msgstr ""
