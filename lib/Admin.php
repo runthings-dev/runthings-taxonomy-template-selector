@@ -10,6 +10,7 @@ namespace Runthings\TaxonomyTemplateSelector;
 use Runthings\TaxonomyTemplateSelector\Admin\TermEditor;
 use Runthings\TaxonomyTemplateSelector\Admin\Column;
 use Runthings\TaxonomyTemplateSelector\Admin\BulkActions;
+use Runthings\TaxonomyTemplateSelector\Admin\QuickEdit;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -42,12 +43,20 @@ class Admin {
 	private $bulk_actions;
 
 	/**
+	 * Quick edit instance
+	 *
+	 * @var QuickEdit
+	 */
+	private $quick_edit;
+
+	/**
 	 * Initialize admin hooks
 	 */
 	public function __construct() {
 		$this->term_editor  = new TermEditor( $this );
 		$this->column       = new Column( $this );
 		$this->bulk_actions = new BulkActions( $this );
+		$this->quick_edit   = new QuickEdit( $this );
 
 		add_action( 'init', array( $this, 'register_taxonomy_hooks' ), 99 );
 	}
@@ -67,6 +76,7 @@ class Admin {
 		}
 
 		$this->bulk_actions->register_global_hooks();
+		$this->quick_edit->register_global_hooks();
 	}
 
 	/**

@@ -44,6 +44,7 @@ define( 'RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR', plugin_dir_path( __FILE__ ) 
 require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Admin/TermEditor.php';
 require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Admin/Column.php';
 require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Admin/BulkActions.php';
+require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Admin/QuickEdit.php';
 require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Admin.php';
 require_once RUNTHINGS_TAXONOMY_TEMPLATE_SELECTOR_DIR . 'lib/Template_Loader.php';
 
