@@ -105,7 +105,7 @@ Your existing template mappings will be migrated automatically when you activate
 
 1. Template selection dropdown on the term edit screen.
 
-![Template selection dropdown](https://raw.githubusercontent.com/runthings-dev/runthings-taxonomy-template-selector/main/.wordpress-org/screenshot-1.png)
+![Template selection dropdown](https://raw.githubusercontent.com/runthings-dev/runthings-taxonomy-template-selector/master/.wordpress-org/screenshot-1.png)
 
 ## Changelog
 
