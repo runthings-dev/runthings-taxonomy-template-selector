@@ -4,7 +4,7 @@ Tags: category, template, taxonomy, custom template, archive
 Requires at least: 6.4
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ Your existing template mappings will be migrated automatically when you activate
 
 == Changelog ==
 
+= 1.3.3 - 14th January 2026 =
+* Revert readme.md exclusion - it was a false positive / bug in plugin check plugin
+* First release on WordPress.org
+
 = 1.3.2 - 14th January 2026 =
 * Exclude readme.md from plugin distribution zip file
 
@@ -132,14 +136,14 @@ Your existing template mappings will be migrated automatically when you activate
 
 == Upgrade Notice ==
 
+= 1.3.3 =
+Revert readme.md exclusion - it was a false positive / bug in plugin check plugin.
+
 = 1.3.2 =
 Exclude readme.md from plugin distribution zip file.
 
 = 1.3.1 =
 Renamed display name to 'TaxoSelect - Taxonomy Template Selector' for WP.org submission compliance
-
-= 1.3.0 =
-Quick edit support and column display fix.
 
 == License ==
 

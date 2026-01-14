@@ -2,7 +2,7 @@
 
 Assign archive templates to categories, tags and other taxonomy terms.
 
-[![WordPress Plugin Version](https://img.shields.io/badge/version-1.3.2-blue)](https://runthings.dev/wordpress-plugins/taxonomy-template-selector/)
+[![WordPress Plugin Version](https://img.shields.io/badge/version-1.3.3-blue)](https://runthings.dev/wordpress-plugins/taxonomy-template-selector/)
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-green)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D7.4-8892BF)](https://php.net/)
 [![WordPress Version](https://img.shields.io/badge/wordpress-%3E%3D6.4-21759B)](https://wordpress.org/)
@@ -108,6 +108,10 @@ Your existing template mappings will be migrated automatically when you activate
 ![Template selection dropdown](https://raw.githubusercontent.com/runthings-dev/runthings-taxonomy-template-selector/master/.wordpress-org/screenshot-1.png)
 
 ## Changelog
+
+### 1.3.3 - 14th January 2026
+* Revert readme.md exclusion - it was a false positive / bug in plugin check plugin
+* First release on WordPress.org
 
 ### 1.3.2 - 14th January 2026
 * Exclude readme.md from plugin distribution zip file
