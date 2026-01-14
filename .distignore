@@ -19,7 +19,3 @@ build.md
 /bin/
 .DS_Store
 __MACOSX
-
-# wordpress.org / plugin check compliance
-readme.md
-README.md
