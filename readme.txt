@@ -1,4 +1,4 @@
-=== Taxonomy Template Selector ===
+=== TaxoSelect - Taxonomy Template Selector ===
 Contributors: runthingsdev
 Tags: category, template, taxonomy, custom template, archive
 Requires at least: 6.4

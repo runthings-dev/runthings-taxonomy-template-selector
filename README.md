@@ -1,4 +1,4 @@
-# Taxonomy Template Selector
+# TaxoSelect - Taxonomy Template Selector
 
 Assign archive templates to categories, tags and other taxonomy terms.
 

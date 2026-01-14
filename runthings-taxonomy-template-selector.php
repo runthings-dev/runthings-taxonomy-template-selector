@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Taxonomy Template Selector
+ * Plugin Name: TaxoSelect - Taxonomy Template Selector
  * Plugin URI: https://runthings.dev/wordpress-plugins/taxonomy-template-selector/
  * Description: Assign archive templates to categories, tags and other taxonomy terms
  * Author: runthingsdev
