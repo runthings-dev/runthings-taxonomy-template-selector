@@ -2,7 +2,7 @@
 
 Assign archive templates to categories, tags and other taxonomy terms.
 
-[![WordPress Plugin Version](https://img.shields.io/badge/version-1.3.0-blue)](https://runthings.dev/wordpress-plugins/taxonomy-template-selector/)
+[![WordPress Plugin Version](https://img.shields.io/badge/version-1.3.1-blue)](https://runthings.dev/wordpress-plugins/taxonomy-template-selector/)
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-green)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D7.4-8892BF)](https://php.net/)
 [![WordPress Version](https://img.shields.io/badge/wordpress-%3E%3D6.4-21759B)](https://wordpress.org/)
@@ -108,6 +108,9 @@ Your existing template mappings will be migrated automatically when you activate
 ![Template selection dropdown](https://raw.githubusercontent.com/runthings-dev/runthings-taxonomy-template-selector/master/.wordpress-org/screenshot-1.png)
 
 ## Changelog
+
+### 1.3.1 - 14th January 2026
+* Renamed display name to 'TaxoSelect - Taxonomy Template Selector' for WP.org submission compliance
 
 ### 1.3.0 - 3rd January 2026
 * Added quick edit support for changing templates inline
